@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+*{
+    box-sizing: border-box;
+    /*
+        box-sizing: content-box(default)
+            #example1 {
+            box-sizing: content-box;  
+            width: 300px;
+            height: 100px;
+            padding: 30px;  
+            border: 10px solid blue;
+            }
+            This div has a width of 300px. But the full width is 300px + 20px (left and right border) + 60px (left and right padding) = 380px!
+        
+        box-sizing: border-box;
+            #example2 {
+                box-sizing: border-box;
+                width: 300px;
+                height: 100px;
+                padding: 30px;  
+                border: 10px solid blue;
+                }
+            Here, the full width is 300px, no matter what!
+    */
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+}
+
+.slider{
+    /* position:relative; */
+    /*
+        position:relative
+            Position relative to the viewport
+            left:100px // left to the viewport
+        position:absolute
+            Position relative to the nearest ancestor
+            left:100px // left to the parent div
+    */
+    overflow: hidden;
+    height: 100vh;
+    width: 100vh;
+}
+
+.slide{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.slide.current{ 
+    opacity: 1;
+}
+
+.slide .content{
+    position: absolute;
+    bottom: 70px;
+    left: -800px;
+    width: 800px;
+    font-size: 1.2em;
+    background-color: rgba(255, 255, 255, 0.8);
+    color:#000;
+    padding: 35px;
+    opacity: 0;
+}
+
+.slide .content .h1{
+    margin-bottom: 10px;
+}
+
+.slide.current .content{
+    opacity: 1;
+    transform: translateX(800px);/*bring it over from -600 to 600 on x-axis*/
+    transition: all 0.7s ease-in-out 0.3s;/* transition:{ on which element,duration,type,delay}*/
+}
+
+.buttons button#next{
+    position: absolute;
+    top:50%;
+    right: 15px;
+}
+.buttons button#prev{
+    position: absolute;
+    top:50%;
+    left: 15px;
+}
+
+.buttons button{
+    border:2px solid #fff;
+    background-color: transparent;
+    color:#fff;
+    cursor: pointer;
+    padding: 13px 15px;
+    border-radius: 50%;
+    outline: none;
+}
+
+.buttons button:hover{
+    background-color: #fff;
+    color:#333;
+}
+
+/* Background Images */
+/* we could have done class=slide1,slide2,slide3..etc, but for that we need to write same code for each slides, so we set all as slide and use nth-child
+*/
+.slide:nth-child(1){
+    background: url('./images/1.jpg') no-repeat center center/cover;
+}
+.slide:nth-child(2){
+    background: url('./images/2.jpg') no-repeat center top/cover;
+}
+.slide:nth-child(3){
+    background: url('./images/3.jpg') no-repeat center top/cover;
+}
+.slide:nth-child(4){
+    background: url('./images/4.jpg') no-repeat center top/cover;
+}
+.slide:nth-child(5){
+    background: url('./images/5.jpg') no-repeat center top/cover;
+}
+.slide:nth-child(6){
+    background: url('./images/6.jpg') no-repeat center top/cover;
+}
