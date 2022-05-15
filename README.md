@@ -1,3 +1,3 @@
 ### hello
 - A webpage with sliding Images
-- URL 
+- URL https://techitakar.github.io/imgSlider/
